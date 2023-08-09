@@ -1,6 +1,20 @@
 const canvasWidth = 960;
 const canvasHeight = 500;
 
+
+class Letter {
+  constructor(size, arcStart, arcStop, lineXOffset, lineYOffset, lineLength) {
+    this.size = size;
+    this.arcStart = arcStart;
+    this.arcStop = arcStop;
+
+    this.lineXOffset = lineXOffset;
+    this.lineYOffset = lineYOffset;
+    this.lineLength = lineLength;
+  }
+}
+
+
 /*
  * my three variable per letter are:
  *
@@ -12,23 +26,9 @@ const canvasHeight = 500;
  *
  */
 
-const letterA = {
-  "size": 80,
-  "offsetx": 0,
-  "offsety": 35
-}
-
-const letterB = {
-  "size": 150,
-  "offsetx": 0,
-  "offsety": -145
-}
-
-const letterC = {
-  "size": 100,
-  "offsetx": 30,
-  "offsety": 0
-}
+const letterA = new Letter(150, 30, 330, 90, -75, 330);
+const letterB = new Letter(150, 210, 150, -90, -150, 330); 
+const letterC = new Letter(150, 30, 330, -40, -35, 285); 
 
 const backgroundColor  = "#caf0f8";
 const strokeColor      = "#03045e";
@@ -42,8 +42,9 @@ function setup () {
   main_canvas.parent('canvasContainer');
 
   // color/stroke setup
+  noFill();
   stroke(strokeColor);
-  strokeWeight(4);
+  strokeWeight(9);
 
   // with no animation, redrawing the screen is not necessary
   noLoop();
@@ -65,15 +66,21 @@ function draw () {
 
 function drawLetter(posx, posy, letterData) {
   // determine parameters for second circle
-  let size2 = letterData["size"];
-  let pos2x = posx + letterData["offsetx"];
-  let pos2y = posy + letterData["offsety"];
+  let size2 = letterData.size;
+  let start = letterData.arcStart * Math.PI/180;
+  let stop = letterData.arcStop * Math.PI/180;
 
-  // draw two circles
-  fill(darkBlue);
-  ellipse(posx, posy, 150, 150);
-  fill(lightBlue);
-  ellipse(pos2x, pos2y, size2, size2);
+  let lxOff = posx + letterData.lineXOffset;
+  let lyOff = posy + letterData.lineYOffset;
+  let lineLength = letterData.lineLength;
+
+  let scalar = letterData.scalar;
+
+
+  arc(posx, posy, size2, size2, start, stop);
+  line(lxOff, lyOff, lxOff, lineLength);
+
+
 }
 
 function keyTyped() {
