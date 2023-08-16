@@ -1,10 +1,30 @@
+/**
+ * PARAMS:
+ * needs params that control the radius, start, and end of each arc
+ * needs params to control the position and length of each line
+ * 
+ * SUGGESTIONS:
+ * may need parameters for smaller arcs to add visual interest (this could also be hard coded and proportional to the main curve)
+ * may need parameters for a shadow
+ * may need parameters for circles to add visual interest
+ * may need parameters for line width and colour
+ * 
+ */
+
 class Character {
   constructor(size, offsetx, offsety) {
     this.size = size;
     this.offsetx = offsetx;
     this.offsety = offsety;
   }
+
+  draw() {
+
+  }
 }
+
+
+
 
 const alphabet = {
   "default": new Character(40, 0, 0),
@@ -17,85 +37,31 @@ const alphabet = {
   "G": new Character(50, 15, 0),
   "H": new Character(50, 15, 0),
   "I": new Character(50, 15, 0),
-  "J": new Character(
-    50, 15, 0
-  ),
-  "K": new Character(
-    50, 15, 0
-  ),
-  "L": new Character(
-    50, 15, 0
-  ),
-  "M": new Character(
-    50, 15, 0
-  ),
-  "N": new Character(
-    50, 15, 0
-  ),
-  "O": new Character(
-    50, 15, 0
-  ),
-  "P": new Character(
-    50, 15, 0
-  ),
-  "Q": new Character(
-    50, 15, 0
-  ),
-  "R": new Character(
-    50, 15, 0
-  ),
-  "S": new Character(
-    50, 15, 0
-  ),
-  "T": new Character(
-    50, 15, 0
-  ),
-  "U": new Character(
-    50, 15, 0
-  ),
-  "V": new Character(
-    50, 15, 0
-  ),
-  "W": new Character(
-    50, 15, 0
-  ),
-  "X": new Character(
-    50, 15, 0
-  ),
-  "Y": new Character(
-    50, 15, 0
-  ),
-  "Z": new Character(
-    50, 15, 0
-  ),
-  "0": new Character(
-    40, 0, 17
-  ),
-  "1": new Character(
-    40, 0, 17
-  ),
-  "2": new Character(
-    40, 0, 17
-  ),
-  "3": new Character(
-    40, 0, 17
-  ),
-  "4": new Character(
-    40, 0, 17
-  ),
-  "5": new Character(
-    40, 0, 17
-  ),
-  "6": new Character(
-    40, 0, 17
-  ),
-  "7": new Character(
-    40, 0, 17
-  ),
-  "8": new Character(
-    40, 0, 17
-  ),
-  "9": new Character(
-    40, 0, 17
-  )
+  "J": new Character(50, 15, 0),
+  "K": new Character(50, 15, 0),
+  "L": new Character(50, 15, 0),
+  "M": new Character(50, 15, 0),
+  "N": new Character(50, 15, 0),
+  "O": new Character(50, 15, 0),
+  "P": new Character(50, 15, 0),
+  "Q": new Character(50, 15, 0),
+  "R": new Character(50, 15, 0),
+  "S": new Character(50, 15, 0),
+  "T": new Character(50, 15, 0),
+  "U": new Character(50, 15, 0),
+  "V": new Character(50, 15, 0),
+  "W": new Character(50, 15, 0),
+  "X": new Character(50, 15, 0),
+  "Y": new Character(50, 15, 0),
+  "Z": new Character(50, 15, 0),
+  "0": new Character(40, 0, 17),
+  "1": new Character(40, 0, 17),
+  "2": new Character(40, 0, 17),
+  "3": new Character(40, 0, 17),
+  "4": new Character(40, 0, 17),
+  "5": new Character(40, 0, 17),
+  "6": new Character(40, 0, 17),
+  "7": new Character(40, 0, 17),
+  "8": new Character(40, 0, 17),
+  "9": new Character(40, 0, 17)
 }
