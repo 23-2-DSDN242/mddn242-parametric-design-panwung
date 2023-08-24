@@ -1,7 +1,6 @@
 /**
  * 
  * SUGGESTIONS:
- * may need parameters for smaller arcs to add visual interest (this could also be hard coded and proportional to the main curve)
  * may need parameters for a shadow (draw everything twice and make the first iteration slightly offset, use different colour)
  * may need parameters for circles to add visual interest
  * 
@@ -116,7 +115,13 @@ const alphabet = {
   "H": new Oldge(50, 15, 0),
   "I": new Oldge(50, 15, 0),
   "J": new Oldge(50, 15, 0),
-  "K": new Oldge(50, 15, 0),
+
+  "K": new Character(
+    -10, 35, SIZE, 270, 0,
+    -10, -35, SIZE * 2/3, 0, 90, 
+    -25, -35, 140, 0
+  ),
+
   "L": new Oldge(50, 15, 0),
   "M": new Oldge(50, 15, 0),
   "N": new Oldge(50, 15, 0),
@@ -126,25 +131,47 @@ const alphabet = {
     0, 0, SIZE * 2/3, 300, 240,
     0, 0, 0, 0
   ),
-
-  "P": new Oldge(50, 15, 0),
-
+  "P": new Character(
+    5, 0, SIZE, 0, 360,
+    5, 0, SIZE * 2/3, 90, 300,
+    -40, 35, 140, 0
+  ),
   "Q": new Character(
     -5, 0, SIZE, 0, 360,
-    -5, 0, SIZE * 2/3, 310, 30, 
-    40, 17.5, 35, 0
+    -5, 0, SIZE * 2/3, 300, 90, 
+    40, 35, 140, 0
+  ),
+  "R": new Oldge(50, 15, 0),
+  "S": new Character(
+    -15, 0, SIZE, 340, 150,
+    15, 0, SIZE, 140, 330,
+    0, 0, 10, 0
   ),
 
-  "R": new Oldge(50, 15, 0),
-  "S": new Oldge(50, 15, 0),
   "T": new Oldge(50, 15, 0),
   "U": new Oldge(50, 15, 0),
   "V": new Oldge(50, 15, 0),
   "W": new Oldge(50, 15, 0),
-  "X": new Oldge(50, 15, 0),
-  "Y": new Oldge(50, 15, 0),
+
+  "X": new Character(
+    35, 0, SIZE, 90, 160,
+    -35, -0, SIZE, 270, 340,
+    0, 0, 95, 45
+  ),
+  "Y": new Character(
+    0, 0, SIZE, 110, 180,
+    0, 0, SIZE, 0, 70,
+    0, 70, 70, 0
+  ),
+
   "Z": new Oldge(50, 15, 0),
-  "0": new Oldge(40, 0, 17),
+
+  "0": new Character(
+    0, 0, SIZE, 0, 360,
+    0, 0, SIZE * 2/3, 220, 280,
+    0, 0, 35, 45
+  ),
+
   "1": new Oldge(40, 0, 17),
   "2": new Oldge(40, 0, 17),
   "3": new Oldge(40, 0, 17),
@@ -152,6 +179,15 @@ const alphabet = {
   "5": new Oldge(40, 0, 17),
   "6": new Oldge(40, 0, 17),
   "7": new Oldge(40, 0, 17),
-  "8": new Oldge(40, 0, 17),
-  "9": new Oldge(40, 0, 17)
+
+  "8": new Character(
+    0, 0, SIZE, 300, 240,
+    0, -70, SIZE, 120, 60,
+    0, -35, 70, 0
+  ),
+  "9": new Character(
+    -5, -70, SIZE, 40, 340,
+    -5, -70, SIZE * 2/3, 340, 40,
+    33, -35, 140, 10
+  )
 }
