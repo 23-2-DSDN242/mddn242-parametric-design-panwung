@@ -77,7 +77,11 @@ class Oldge {
 const SIZE = 70;
 
 const alphabet = {
-  "default": new Oldge(40, 0, 0),
+  "default": new Character(
+    0, -35, SIZE, 100, 260,
+    0, -35, SIZE, 280, 80,
+    0, -35, 35, 90
+  ),
   "A": new Character(
     -5, 0, SIZE, 30, 330,
     -5, 0, SIZE * 2/3, 0, 150, 
@@ -103,29 +107,51 @@ const alphabet = {
     0, 0, SIZE * 2/3, 115, 225, 
     5, 0, 35, 90
   ),
-  
-  "F": new Oldge(50, 15, 0),
-
+  "F": new Character(
+    -30, 0, SIZE, 20, 90,
+    30, 0, SIZE, 200, 270,
+    0, 0, 60, 90
+  ),
   "G": new Character(
     -5, 0, SIZE, 30, 330,
     -5, 0, SIZE * 2/3, 0, 70, 
     40, 17.5, 35, 0
   ),
-
-  "H": new Oldge(50, 15, 0),
-  "I": new Oldge(50, 15, 0),
-  "J": new Oldge(50, 15, 0),
-
+  "H": new Character(
+    -10, 35, SIZE, 270, 0,
+    -10, 35, SIZE * 2/3, 270, 0, 
+    -25, -35, 140, 0
+  ),
+  "I": new Character(
+    0, -35, SIZE, 269, 271,
+    0, -35, SIZE * 2/3, 240, 300, 
+    0, 0, 70, 0
+  ),
+  "J": new Character(
+    0, -35, SIZE, 269, 271,
+    0, 35, SIZE * 2/3, 60, 120, 
+    0, 0, 70, 0
+  ),
   "K": new Character(
     -10, 35, SIZE, 270, 0,
     -10, -35, SIZE * 2/3, 0, 90, 
     -25, -35, 140, 0
   ),
-
-  "L": new Oldge(50, 15, 0),
-  "M": new Oldge(50, 15, 0),
-  "N": new Oldge(50, 15, 0),
-
+  "L": new Character(
+    0, -35, SIZE, 240, 300,
+    0, 35, SIZE * 2/3, 60, 120, 
+    0, 0, 70, 0
+  ),
+  "M": new Character(
+    0, 0, SIZE, 120, 60,
+    0, 0, SIZE * 2/3, 130, 270, 
+    0, 5, 35, 0
+  ),
+  "N": new Character(
+    0, 0, SIZE, 120, 60,
+    0, 0, SIZE * 2/3, 130, 190, 
+    0, -15, 35, 90
+  ),
   "O": new Character(
     0, 0, SIZE, 0, 360,
     0, 0, SIZE * 2/3, 300, 240,
@@ -141,49 +167,95 @@ const alphabet = {
     -5, 0, SIZE * 2/3, 300, 90, 
     40, 35, 140, 0
   ),
-  "R": new Oldge(50, 15, 0),
-  "S": new Character(
-    -15, 0, SIZE, 340, 150,
-    15, 0, SIZE, 140, 330,
-    0, 0, 10, 0
+  "R": new Character(
+    -10, 35, SIZE, 270, 0,
+    -10, -35, SIZE * 2/3, 210, 90, 
+    -25, 0, 70, 0
   ),
-
-  "T": new Oldge(50, 15, 0),
-  "U": new Oldge(50, 15, 0),
-  "V": new Oldge(50, 15, 0),
-  "W": new Oldge(50, 15, 0),
-
+  "S": new Character(
+    0, 0, SIZE, 0, 120,
+    0, 0, SIZE, 180, 300,
+    0, 0, 45, 90
+  ),
+  "T": new Character(
+    0, 35, SIZE, 210, 250,
+    0, -35, SIZE, 30, 70, 
+    0, 0, 70, 0
+  ),
+  "U": new Character(
+    0, 0, SIZE, 300, 240,
+    0, 0, SIZE * 2/3, 280, 330, 
+    0, 15, 35, 90
+  ),
+  "V": new Character(
+    0, 0, SIZE, 100, 240,
+    0, 0, SIZE, 300, 80, 
+    0, 0, 0, 0
+  ),
+  "W": new Character(
+    0, 0, SIZE, 300, 240,
+    0, 0, SIZE * 2/3, 90, 240, 
+    0, -5, 35, 0
+  ),
   "X": new Character(
     35, 0, SIZE, 90, 160,
     -35, -0, SIZE, 270, 340,
     0, 0, 95, 45
   ),
   "Y": new Character(
-    0, 0, SIZE, 110, 180,
-    0, 0, SIZE, 0, 70,
-    0, 70, 70, 0
+    10, -17.5, SIZE, 100, 200,
+    10, -17.5, SIZE * 2/3, 110, 190,
+    15, 35, 140, 0
   ),
-
-  "Z": new Oldge(50, 15, 0),
-
+  "Z": new Character(
+    0, 0, SIZE, 60, 180,
+    0, 0, SIZE, 240, 0,
+    0, 0, 45, 90
+  ),
   "0": new Character(
-    0, 0, SIZE, 0, 360,
-    0, 0, SIZE * 2/3, 220, 280,
-    0, 0, 35, 45
+    0, -35, SIZE, 0, 360,
+    0, -35, SIZE * 2/3, 170, 250,
+    0, -35, 35, 10
   ),
-
-  "1": new Oldge(40, 0, 17),
-  "2": new Oldge(40, 0, 17),
-  "3": new Oldge(40, 0, 17),
-  "4": new Oldge(40, 0, 17),
-  "5": new Oldge(40, 0, 17),
-  "6": new Oldge(40, 0, 17),
-  "7": new Oldge(40, 0, 17),
-
+  "1": new Character(
+    -13, -90, SIZE, 0, 120,
+    -13, -90, SIZE * 2/3, 330, 190,
+    23, -35, 140, 10
+  ),
+  "2": new Character(
+    0, -70, SIZE, 170, 270,
+    0, 0, SIZE, 350, 90,
+    0, -35, 140, 10
+  ),
+  "3": new Character(
+    0, 0, SIZE, 300, 180,
+    0, -70, SIZE, 180, 60, 
+    0, -35, 70, 10
+  ),
+  "4": new Character(
+    0, 0, SIZE, 300, 45,
+    0, -70, SIZE, 120, 230, 
+    0, -35, 140, 10
+  ),
+  "5": new Character(
+    0, 0, SIZE, 300, 180,
+    0, -70, SIZE, 120, 0, 
+    0, -35, 70, 10
+  ),
+  "6": new Character(
+    5, 0, SIZE, 220, 160,
+    5, 0, SIZE * 2/3, 120, 0, 
+    -33, -35, 140, 10
+  ),
+  "7": new Character(
+    6, -70, SIZE, 170, 270,
+    6, -70, SIZE * 2/3, 340, 40,
+    6, -35, 140, 10
+  ),
   "8": new Character(
     0, 0, SIZE, 300, 240,
     0, -70, SIZE, 120, 60,
-    0, -35, 70, 0
+    0, -35, 70, 10
   ),
   "9": new Character(
     -5, -70, SIZE, 40, 340,
