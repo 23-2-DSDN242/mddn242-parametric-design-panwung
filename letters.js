@@ -1,20 +1,5 @@
 /**
  * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * ◕ ͜ﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞﱞ◕
- * 
- */
-
-
-/**
- * 
  * SUGGESTIONS:
  * may need parameters for a shadow (draw everything twice and make the first iteration slightly offset, use different colour)
  * may need parameters for circles to add visual interest
@@ -74,17 +59,6 @@ class Character {
       0, + this.lineLength/2
     );
     pop();
-  }
-}
-
-
-
-class Oldge {
-  constructor(size, offsetx, offsety) {
-    this.type = "old";
-    this.size = size;
-    this.offsetx = offsetx;
-    this.offsety = offsety;
   }
 }
 
@@ -184,7 +158,7 @@ const alphabet = {
   ),
   "R": new Character(
     -10, 35, SIZE, 270, 0,
-    -10, -35, SIZE * 2/3, 210, 90, 
+    -10, -17.5, SIZE * 2/3, 260, 30, 
     -25, 0, 70, 0
   ),
   "S": new Character(

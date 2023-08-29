@@ -4,9 +4,8 @@ var systemLineColor = "#000000";
 var systemBoxColor = "#00c800";
 
 /* internal constants */
-const darkBlue  = "#0077b6";
-const lightBlue  = "#90e0ef";
-const strokeColor  = "#03045e";
+const col1 = [3, 4, 94]
+const col2 = [255, 175, 8];
 
 /*
  * Draw the letter given the letterData
@@ -16,37 +15,32 @@ const strokeColor  = "#03045e";
  * from (0,0) to (100, 200)
  */
 function drawLetter(letterData) {
-
-  if (letterData.type === "old") {
-    // color/stroke setup
-    stroke(strokeColor);
-    strokeWeight(4);
-
-    // determine parameters for second circle
-    let size2 = letterData["size"];
-    let pos2x = 50  + letterData["offsetx"];
-    let pos2y = 150 + letterData["offsety"];
-
-    // draw two circles
-    fill(darkBlue);
-    ellipse(50, 150, 75, 75);
-    fill(lightBlue);
-    ellipse(pos2x, pos2y, size2, size2);
-  }
-  else {
-    letterData.draw(50, 150, [3, 4, 94], [255, 175, 8]);
-  }
-
-
+    letterData.draw(50, 150, col1, col2);
 }
 
 function interpolate_letter(percent, oldObj, newObj) {
-  let new_letter = {};
-  new_letter.type = oldObj.type;
-  new_letter["size"]    = map(percent, 0, 100, oldObj["size"], newObj["size"]);
-  new_letter["offsetx"] = map(percent, 0, 100, oldObj["offsetx"], newObj["offsetx"]);
-  new_letter["offsety"] = map(percent, 0, 100, oldObj["offsety"], newObj["offsety"]);
-  return new_letter;
+  let newLetter = {};
+  
+  newLetter.offsetx1     = map(percent, 0, 100, oldObj.offsetx1, newObj.offsetx1);
+  newLetter.offsety1     = map(percent, 0, 100, oldObj.offsety1, newObj.offsety1);
+  newLetter.radius1      = map(percent, 0, 100, oldObj.radius1, newObj.radius1);
+  newLetter.arcStart1    = map(percent, 0, 100, oldObj.arcStart1, newObj.arcStart1);
+  newLetter.arcStop1     = map(percent, 0, 100, oldObj.arcStop1, newObj.arcStop1);
+
+  newLetter.offsetx2     = map(percent, 0, 100, oldObj.offsetx2, newObj.offsetx2);
+  newLetter.offsety2     = map(percent, 0, 100, oldObj.offsety2, newObj.offsety2);
+  newLetter.radius2      = map(percent, 0, 100, oldObj.radius2, newObj.radius2);
+  newLetter.arcStart2    = map(percent, 0, 100, oldObj.arcStart2, newObj.arcStart2);
+  newLetter.arcStop2     = map(percent, 0, 100, oldObj.arcStop2, newObj.arcStop2);
+
+  newLetter.lineXCenter  = map(percent, 0, 100, oldObj.lineXCenter, newObj.lineXCenter);
+  newLetter.lineYCenter  = map(percent, 0, 100, oldObj.lineYCenter, newObj.lineYCenter);
+  newLetter.lineLength   = map(percent, 0, 100, oldObj.lineLength, newObj.lineLength);
+  newLetter.lineRotation = map(percent, 0, 100, oldObj.lineRotation, newObj.lineRotation);
+
+  newLetter.draw = oldObj.draw
+
+  return newLetter;
 }
 
 var swapWords = [
