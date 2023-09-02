@@ -64,8 +64,7 @@ class Character {
 
 /**
  * Because editor.js creates new objects without the draw(...) method,
- * this class is used to convert those new objects into Character objects so 
- * that they will inherit that method. 
+ * this class is used to convert those new objects into objects that inherit this method.
  */
 class CharConverter extends Character {
   constructor(obj) {
