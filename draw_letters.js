@@ -4,7 +4,7 @@ var systemLineColor = "#000000";
 var systemBoxColor = "#00c800";
 
 /* internal constants */
-const col1 = [3, 4, 94]
+const col1 = [3, 4, 94];
 const col2 = [255, 175, 8];
 
 /*
@@ -15,7 +15,7 @@ const col2 = [255, 175, 8];
  * from (0,0) to (100, 200)
  */
 function drawLetter(letterData) {
-    letterData.draw(50, 150, col1, col2);
+  letterData.draw(50, 150, col1, col2);
 }
 
 function interpolate_letter(percent, oldObj, newObj) {
@@ -42,16 +42,11 @@ function interpolate_letter(percent, oldObj, newObj) {
 
   newLetter.draw = oldObj.draw;
 
-
   return newLetter;
-
-
 }
-
 
 var swapWords = [
   "ABBAABBA",
   "CAB?CAB?",
   "BAAAAAAA",
-  "AMBASING",
 ]

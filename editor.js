@@ -5,9 +5,22 @@
  * ["object_field", minimum_bound, maximum_bound]
  */
 const sliderInfo = [
-  ["size",       0, 100],
-  ["offsetx",  -30,  30],
-  ["offsety", -100, 100]
+  ["offsetx1",    -70, 70],
+  ["offsety1",    -70, 70],
+  ["radius1",      0,  70],
+  ["arcStart1",    0,  360],
+  ["arcStop1",     0,  360],
+
+  ["offsetx2",    -70, 70],
+  ["offsety2",    -70, 70],
+  ["radius2",      0,  70],
+  ["arcStart2",    0,  360],
+  ["arcStop2",     0,  360],
+
+  ["lineXCenter", -70, 70],
+  ["lineYCenter", -70, 70],
+  ["lineLength",   0,  140],
+  ["lineRotation", 0,  90],
 ];
 
 // PROBABLY DON'T NEED TO EDIT ANYTHING ELSE. STOP HERE.
@@ -30,7 +43,7 @@ function sliderToDataObject() {
     bounds_high = sliderInfo[i][2]
     obj[o_name] = map(param_sliders[i].value(), 0, 100, bounds_low, bounds_high);
   }
-  return obj;
+  return new CharConverter(obj);
 }
 
 let param_sliders = [];
@@ -43,12 +56,14 @@ const canvasHeight = 500;
 let debugBox = false;
 
 function setup () {
+
   // create the drawing canvas, save the canvas element
   main_canvas = createCanvas(canvasWidth, canvasHeight);
   main_canvas.parent('canvasContainer');
 
   // rotation in degrees (more slider friendly)
-  angleMode(DEGREES);
+  // I need radians >:(
+  angleMode(RADIANS);
 
   for(let i=0; i<numSliders; i++) {
     let cur_row = select("#row" + (i+1))
