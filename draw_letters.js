@@ -21,6 +21,8 @@ function drawLetter(letterData) {
 function interpolate_letter(percent, oldObj, newObj) {
   let newLetter = {};
 
+  newLetter.sWeight = oldObj.sWeight;
+
   newLetter.offsetx1     = map(percent, 0, 100, oldObj.offsetx1, newObj.offsetx1);
   newLetter.offsety1     = map(percent, 0, 100, oldObj.offsety1, newObj.offsety1);
   newLetter.radius1      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, oldObj.radius1, newObj.radius1);
