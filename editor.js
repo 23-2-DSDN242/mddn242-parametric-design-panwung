@@ -5,6 +5,8 @@
  * ["object_field", minimum_bound, maximum_bound]
  */
 const sliderInfo = [
+  ["sWeight", 1, 6],
+
   ["offsetx1",    -70, 70],
   ["offsety1",    -70, 70],
   ["radius1",      0,  70],
