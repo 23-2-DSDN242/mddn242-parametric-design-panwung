@@ -53,66 +53,83 @@ var swapWords = [
   "BAAAAAAA",
 ]
 
+let c;
+
 function interpCalculator(percent, startA, startB, stopA, stopB) {
 
   let startInterp = 0; // startA + percent * (startB - startA) / 100;
   let stopInterp = 0; // stopA + percent * (startB - stopA) / 100;
 
-
-
-
-  /**
-   * Moves both start and stop in one direction clockwise or anti-clockwise.
-   */
   if (startA < stopB && stopA > startB) {
-    // Clockwise
-    if (startA > startB) {
 
+    // Clockwise
+    if (startA > stopA && startB < stopB) {
       startB += 360; // Creates +ve ratio
     }
     
     // Anti-clockwise
-    else if (startA < startB) {
+    else if (startA < stopA && startB > stopB) {
       startA += 360; // Creates -ve ratio
     }
-
-
-
   }
 
+  
 
-
-  /**
-   * --------------------------------------------------------
-   * REDO ALL OF THIS BELOW
-   * --------------------------------------------------------
-   */
-
-
-
-  /**
-   * Moves start anti-clockwise and stop clockwise.
-   */
   else if (startA < stopB && stopA < startB) {
-    if (startA < startB) startA += 360;
-    if (stopA > stopB) stopB += 360;
-  }
-
-  /**
-   * Moves start clockwise and stop anti-clockwise.
-   */
-  else if (startA > stopB && stopA > startB) {
-
-    if (startA > startB) startB += 360;
-    if (stopA < stopB) stopA += 360;
+    if () {
+      
+    }
   }
 
 
-  /**
-   * --------------------------------------------------------
-   * REDO ALL OF THIS ABOVE
-   * --------------------------------------------------------
-   */
+
+
+
+  c = compare(startA, startB, stopA, stopB);
+
+
+
+
+
+  // else if (startA < stopB && stopA < startB) {
+  //   // console.log("<<<<<");
+
+  //   /*
+  //   * b to h : start +ve, stop -ve || stopH is 360 and needs to be 0
+  //   * startB < startH && stopB < stopH
+  //   * startB > stopB && startH < stopH
+  //   * startB < stopH && stopB < startH
+  //   * 
+  //   * 
+  //   * 
+  //   * f to t:
+  //   * startF < startT
+  //   * stopF < stopT
+  //   * 
+  //   * startF < stopF
+  //   * startT < stopT
+  //   * 
+  //   * startF stopT
+  //   * 
+  //   * 
+  //   * 
+  //   */
+
+  //   if (stopA < stopB && stopB > startA) {
+  //     console.log("fjlhkfsk")
+  //     stopB -= 360;
+  //   }
+
+  // }
+
+  // else if (startA > stopB && stopA > startB) {
+  //   console.log(">>>>>");
+  // }
+
+  
+
+
+
 
   // Interpolate
   startInterp = startA + percent * (startB - startA) / 100;
@@ -126,9 +143,140 @@ function interpCalculator(percent, startA, startB, stopA, stopB) {
 }
 
 
+function compare(startA, startB, stopA, stopB) {
+  let c = [];
+
+
+  c.push(["startA ? startB : " + startA + ((startA < startB) ? "<" : ">") + startB]);
+  c.push(["stopA ? stopB   : " + stopA + ((stopA < stopB) ? "<" : ">") + stopB]);
+
+  c.push(["startA ? stopA  : " + startA + ((startA < stopA) ? "<" : ">") + stopA]);
+  c.push(["startB ? stopB  : " + startB + ((startB < stopB) ? "<" : ">") + stopB]);
+
+  c.push(["startA ? stopB  : " + startA + ((startA < stopB) ? "<" : ">") + stopB]);
+  c.push(["stopA ? startB  : " + stopA + ((stopA < startB) ? "<" : ">") + startB])
+
+  return c;
+}
+
+
+
 /**
  * 
- * 
+ * /**
+   * --------------------------------------------------------
+   * REDO ALL OF THIS BELOW
+   * --------------------------------------------------------
+   */
+
+
+
+  /* 
+   * x to b : both should move anti-clockwise
+   * startX < startB && stopX > stopB
+   * startX < stopX && startB > stopB
+   * startX < stopB & stopX < startB
+
+   * b to h : start +ve, stop -ve || stopH is 360 and needs to be 0
+   * startB < startH && stopB < stopH
+   * startB > stopB && startH < stopH
+   * startB < stopH && stopB < startH
+   * 
+   * y to u : stop +ve, start -ve;
+   * startY < startU
+   * stopY < stopU
+   * startY < stopY
+   * startU > stopU
+   * 
+   * startY < stopU && stopY < startU
+   * 
+   */
+
+
+//   else if (startA < stopB && stopA < startB) {
+
+//     if (startA < startB && startA < stopA) {
+//       startA += 360;
+//     }
+    
+    
+
+
+//     if (stopA > stopB) {
+//       stopB += 360;
+//     }
+    
+
+//     // with && startA < stopA, y to u works BUT b to r breaks
+//     /**
+//      * stopA < stopB AND NOT startA < stopA = -360
+//      * stopA < stopB AND startA < stopA = do nothing
+//      * 
+//      * 
+//      * so u to y should not call this 
+//      * but b to r should call this
+//      * 
+//      * both are triggered upon (stopA < stopB)
+//      * and both respond to (stopA < stopB && startA < stopA)
+//      * 
+//      * a different condition must be met
+//      */
+//     if (stopA < stopB && startA < stopA) {
+//       stopB -= 360;
+//     }
+
+
+
+//   }
+
+
+//   /*
+//   * r to t : both should move clockwise
+//   * startR > startT
+//   * stopR > stopT
+//   * 
+//   * startR < stopR
+//   * startT < stopT
+//   * 
+//   * startR > stopT && stopR > startT
+//   * 
+//   * 
+//   * u to y : stop -ve, start +ve
+//   * startU > startY && stopU > stopY
+//   * startU > stopU && startY < stopY
+//   * startU > stopY && stopU > startY
+//   * 
+//   * 
+//   * 
+//  * u to b :
+//  * startU > startB
+//  * stopU > stopB
+//  * 
+//  * startU 
+//  * 
+//  * startU > stopB
+//  * stopU > startB
+//   * 
+//   */
+
+
+//   else if (startA > stopB && stopA > startB) {
+
+//     if (startA > startB && startA > stopA) {
+//       startB += 360;
+//     } 
+
+
+//     // if (startA > startB) startB += 360;
+//     // if (stopA < stopB) stopA += 360;
+//   }
+
+
+//   
+//    * --------------------------------------------------------
+//    * REDO ALL OF THIS ABOVE
+//    * --------------------------------------------------------
+/*
  * FOUR POSSIBLE COMBINATIONS: (THIS IS WRONG)
  * IF startA < stopB AND stopA > startB -> MOVE ALL +VE 
  * IF startA > stopB AND stopA < startB -> MOVE ALL -VE
@@ -142,6 +290,16 @@ function interpCalculator(percent, startA, startB, stopA, stopB) {
  * 
  * 
  * 
+ * 
+ * r to t : both should move clockwise
+ * startR > startT
+ * stopR > stopT
+ * 
+ * startR < stopR
+ * startT < stopT
+ * 
+ * startR > stopT
+ * stopR > startT
  * 
  * 
  * 
@@ -190,8 +348,15 @@ function interpCalculator(percent, startA, startB, stopA, stopB) {
  * startB < stopA
  * stopB > startA
  * 
+ * c to v : start +ve, stop -ve
+ * startC < startV
+ * stopC > stopV
  * 
+ * startC < stopC
+ * startV < stopV
  * 
+ * startC < stopV
+ * stopC > startV
  * 
  * 
  * 
@@ -239,7 +404,19 @@ function interpCalculator(percent, startA, startB, stopA, stopB) {
  * x to b : both should move anti-clockwise
  * startX < startB
  * stopX > stopB
- * 
+ *     if ((startA < startB && stopA < stopB) && (startA > stopA && startB < stopB)) {
+      stopB -= 360;
+    }
+
+    else if (startA < startB && startA < stopA) {
+      startA += 360;
+
+    }
+    
+    // else if (stopA > stopB) {
+    //   stopB += 360;
+    // }
+
  * startX < stopX
  * startB > stopB
  * 
@@ -257,6 +434,22 @@ function interpCalculator(percent, startA, startB, stopA, stopB) {
  * 
  * startB > stopX
  * stopB > startX
+ * 
+ * 
+ * b to h : start +ve, stop -ve || stopH is 360 and needs to be 0
+ * startB < startH
+ * stopB < stopH
+ * 
+ * startB > stopB
+ * startH < stopH
+ * 
+ * startB < stopH
+ * stopB < startH
+ * 
+ * u to b :
+ * startU > stopB
+ * stopU > startB
+ * 
  * 
  */
 

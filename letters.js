@@ -127,8 +127,8 @@ const alphabet = {
   ),
   "H": new Character(
     STROKE_WEIGHT,
-    -10, 35, SIZE, 270, 0,
-    -10, 35, SIZE * 2/3, 270, 0, 
+    -10, 35, SIZE, 270, 360,
+    -10, 35, SIZE * 2/3, 270, 360, 
     -25, -35, 140, 0
   ),
   "I": new Character(
@@ -187,7 +187,7 @@ const alphabet = {
   ),
   "R": new Character(
     STROKE_WEIGHT,
-    -10, 35, SIZE, 270, 0,
+    -10, 35, SIZE, 270, 360,
     -10, -17.5, SIZE * 2/3, 260, 30, 
     -25, 0, 70, 0
   ),
@@ -229,7 +229,7 @@ const alphabet = {
   ),
   "Y": new Character(
     STROKE_WEIGHT,
-    10, -17.5, SIZE, 100, 200,
+    10, -17.5, SIZE, 100, 220,
     10, -17.5, SIZE * 2/3, 110, 190,
     15, 35, 140, 0
   ),
@@ -278,7 +278,7 @@ const alphabet = {
   "6": new Character(
     STROKE_WEIGHT,
     5, 0, SIZE, 220, 160,
-    5, 0, SIZE * 2/3, 120, 0, 
+    5, 0, SIZE * 2/3, 120, 360, 
     -33, -35, 140, 10
   ),
   "7": new Character(
