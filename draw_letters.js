@@ -85,8 +85,8 @@ function arcInterp(percent, startA, startB, stopA, stopB) {
   stopInterp = stopA + percent * (stopB - stopA) / 100;
 
   // Corrects if either start or stop go over or under 360 and 0 respectively.
-  startInterp += (startInterp > 360) ? -360 : (startInterp < 0) ? 360 : 0; 
-  stopInterp += (stopInterp > 360) ? -360 : (stopInterp < 0) ? 360 : 0; 
+  startInterp -= (startInterp > 360) ? 360 : 0; 
+  stopInterp -= (stopInterp > 360) ? 360 : 0; 
   
   return [startInterp, stopInterp];
 }
