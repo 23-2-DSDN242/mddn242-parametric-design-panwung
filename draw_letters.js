@@ -40,7 +40,7 @@ function interpolate_letter(percent, oldObj, newObj) {
   newLetter.lineXCenter  = map((2 * percent > 99) ? 100 : 2 * percent, 0, 100, oldObj.lineXCenter, newObj.lineXCenter);
   newLetter.lineYCenter  = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, oldObj.lineYCenter, newObj.lineYCenter);
   newLetter.lineLength   = map(percent, 0, 100, oldObj.lineLength, newObj.lineLength);
-  newLetter.lineRotation = map(percent, 0, 100, oldObj.lineRotation, newObj.lineRotation);
+  newLetter.lineRotation = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, oldObj.lineRotation, newObj.lineRotation);
 
   newLetter.draw = oldObj.draw;
 
