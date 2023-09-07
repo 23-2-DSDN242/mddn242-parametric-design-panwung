@@ -75,12 +75,6 @@ function interpCalculator(percent, startA, startB, stopA, stopB) {
 
   
 
-  else if (startA < stopB && stopA < startB) {
-    if () {
-      
-    }
-  }
-
 
 
 
