@@ -27,15 +27,15 @@ function interpolate_letter(percent, oldObj, newObj) {
   newLetter.offsety1     = map(percent, 0, 100, oldObj.offsety1, newObj.offsety1);
   newLetter.radius1      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, oldObj.radius1, newObj.radius1);
 
-  newLetter.arcStart1    = interpCalculator(percent, oldObj.arcStart1, newObj.arcStart1, oldObj.arcStop1, newObj.arcStop1)[0];
-  newLetter.arcStop1     = interpCalculator(percent, oldObj.arcStart1, newObj.arcStart1, oldObj.arcStop1, newObj.arcStop1)[1];
+  newLetter.arcStart1    = arcInterp(percent, oldObj.arcStart1, newObj.arcStart1, oldObj.arcStop1, newObj.arcStop1)[0];
+  newLetter.arcStop1     = arcInterp(percent, oldObj.arcStart1, newObj.arcStart1, oldObj.arcStop1, newObj.arcStop1)[1];
 
   newLetter.offsetx2     = map(percent, 0, 100, oldObj.offsetx2, newObj.offsetx2);
   newLetter.offsety2     = map(percent, 0, 100, oldObj.offsety2, newObj.offsety2);
   newLetter.radius2      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, oldObj.radius2, newObj.radius2);
 
-  newLetter.arcStart2    = interpCalculator(percent, oldObj.arcStart2, newObj.arcStart2, oldObj.arcStop2, newObj.arcStop2)[0];
-  newLetter.arcStop2     = interpCalculator(percent, oldObj.arcStart2, newObj.arcStart2, oldObj.arcStop2, newObj.arcStop2)[1];
+  newLetter.arcStart2    = arcInterp((percent < 50) ? 0 : 2 * (percent - 50), oldObj.arcStart2, newObj.arcStart2, oldObj.arcStop2, newObj.arcStop2)[0];
+  newLetter.arcStop2     = arcInterp((percent < 50) ? 0 : 2 * (percent - 50), oldObj.arcStart2, newObj.arcStart2, oldObj.arcStop2, newObj.arcStop2)[1];
 
   newLetter.lineXCenter  = map((2 * percent > 99) ? 100 : 2 * percent, 0, 100, oldObj.lineXCenter, newObj.lineXCenter);
   newLetter.lineYCenter  = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, oldObj.lineYCenter, newObj.lineYCenter);
@@ -52,8 +52,6 @@ var swapWords = [
   "CAB?CAB?",
   "BAAAAAAA",
 ]
-
-let c;
 
 /**
  * THEORY:
@@ -74,7 +72,7 @@ let c;
  * Anti-clockwise rule:
  * startB < startA < stopB < stopA, the two points should move left.
  */
-function interpCalculator(percent, startA, startB, stopA, stopB) {
+function arcInterp(percent, startA, startB, stopA, stopB) {
 
   let startInterp = 0, stopInterp = 0;
 
@@ -92,6 +90,3 @@ function interpCalculator(percent, startA, startB, stopA, stopB) {
   
   return [startInterp, stopInterp];
 }
-
-
-
