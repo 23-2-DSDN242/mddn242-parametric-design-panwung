@@ -29,6 +29,11 @@ var swapWords = [
   "BAAAAAAA",
 ]
 
+/**
+ * Interpolates the line length.
+ * If the percent is less than 50, then the line will shrink to 0.
+ * If the percent is greater than 50, then the line will grow from 0 to the new length.
+ */
 function lineInterp(percent, oldL, newL) {
   let interpLength;
   if (percent < 50) interpLength = oldL - percent * (oldL / 50);
