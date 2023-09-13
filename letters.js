@@ -61,6 +61,7 @@ class Character {
     pop();
   }
 
+  /** Interpolates between the character to another character. */
   interpolateTo(to, percent) {
     let sWeight = this.sWeight;
 
