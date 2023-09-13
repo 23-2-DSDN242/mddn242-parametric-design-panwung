@@ -23,4 +23,4 @@ The 15 parameters per character:
   * `lineLength`   : length of the line
   * `lineRotation` : rotation of the line
 
-The overall project, in spite of a few hiccups trying to get the interpolation to work, went by very smoothly. This I believe was due to the pure simplicity of the letterforms I was producing.
+The overall project, in spite of a few hiccups trying to get the interpolation to work, went by very smoothly. This I believe was due to the pure simplicity of the letterforms I was producing. Some other minor issues cropped up due to centralizing everything inside of the Character class, such as editor.js being unable to draw anything, but issues like these were easily fixed.
