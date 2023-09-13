@@ -1,30 +1,35 @@
+/**
+ * Class that defines characters using 15 parameters.
+ */
 class Character {
+  /** Constructor. */
   constructor(
     sWeight,
     offsetx1, offsety1, radius1, arcStart1, arcStop1,
     offsetx2, offsety2, radius2, arcStart2, arcStop2, 
     lineXCenter, lineYCenter, lineLength, lineRotation
   ) {
-    this.sWeight = sWeight;
+    this.sWeight = sWeight;           // line thickness
 
-    this.offsetx1 = offsetx1;
-    this.offsety1 = offsety1;
-    this.radius1 = radius1;
-    this.arcStart1 = arcStart1;
-    this.arcStop1 = arcStop1;
+    this.offsetx1 = offsetx1;         // x offset of the blue arc
+    this.offsety1 = offsety1;         // y offset of the blue arc
+    this.radius1 = radius1;           // radius of the blue arc
+    this.arcStart1 = arcStart1;       // degree to start the blue arc
+    this.arcStop1 = arcStop1;         // degree to end the blue arc
 
-    this.offsetx2 = offsetx2;
-    this.offsety2 = offsety2;
-    this.radius2 = radius2;
-    this.arcStart2 = arcStart2;
-    this.arcStop2 = arcStop2;
+    this.offsetx2 = offsetx2;         // x offset of the orange arc
+    this.offsety2 = offsety2;         // y offset of the orange arc
+    this.radius2 = radius2;           // radius of the orange arc
+    this.arcStart2 = arcStart2;       // degree to start the orange arc
+    this.arcStop2 = arcStop2;         // degree to end the orange arc
 
-    this.lineXCenter = lineXCenter;
-    this.lineYCenter = lineYCenter;
-    this.lineLength = lineLength;
-    this.lineRotation = lineRotation;
+    this.lineXCenter = lineXCenter;   // x line centre position
+    this.lineYCenter = lineYCenter;   // y line centre position
+    this.lineLength = lineLength;     // length of the line
+    this.lineRotation = lineRotation; // rotation of the line
   }
 
+  /** Draws the character. */
   draw(posx, posy, col1, col2) {
     push();
     translate(posx, posy);
