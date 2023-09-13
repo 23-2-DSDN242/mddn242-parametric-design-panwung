@@ -2,11 +2,21 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11538107&assignment_repo_type=AssignmentRepo)
 ## MDDN 242 2023 Assignment 2
 
-(Replace this README with information about your alphabet. This is an example.)
+Each character consists of two arcs and a line. There is one global parameter for stroke thickness, five parameters for each of the two arcs, and four parameters for the line. The first arc, the blue arc, is generally used as an outer arc, and thus for most characters it has a larger radius. The second arc, the orange arc, is mostly used as an accent to add visual, though is does have a more important role in some characters. The line can serve as extra detail in some characters, but for the most part is serves the practicle function of being a verticle or horizontal line in contrast to the curved arcs. Letters and numbers are distinguished by the line having a 10 degree slant.
 
-Each of my letters is composed with two circles. The size and position of the first circle is fixed, but the location and size of the second circle is controlled by three parameters.
-
-The three parameters per letter:
-  * `size` : radius of the second circle
-  * `offsetx` : x offset of the second circle relative to the first one
-  * `offsety` : y offset of the second circle relative to the first one
+The 15 parameters per character:
+  * `sWeight`      : lineweight of character
+  * `offsetx1`     : x offset of the blue arc
+  * `offsety1`     : y offset of the blue arc
+  * `radius1`      : radius of the blue arc
+  * `arcStart1`    : degree to start the blue arc
+  * `arcStop1`     : degree to end the blue arc
+  * `offsetx2`     : x offset of the orange arc
+  * `offsety2`     : y offset of the orange arc
+  * `radius2`      : radius of the orange arc
+  * `arcStart2`    : degree to start the orange arc
+  * `arcStop2`     : degree to end the orange arc
+  * `lineXCenter`  : x line centre position
+  * `lineYCenter`  : y line centre position
+  * `lineLength`   : length of the line
+  * `lineRotation` : rotation of the line
