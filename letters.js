@@ -69,19 +69,19 @@ class Character {
     let offsety1     = map(percent, 0, 100, this.offsety1, to.offsety1);
     let radius1      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, this.radius1, to.radius1);
   
-    let arcStart1    = arcInterp(percent, this.arcStart1, to.arcStart1, this.arcStop1, to.arcStop1)[0];
-    let arcStop1     = arcInterp(percent, this.arcStart1, to.arcStart1, this.arcStop1, to.arcStop1)[1];
+    let arcStart1    = this._arcInterp(percent, this.arcStart1, to.arcStart1, this.arcStop1, to.arcStop1)[0];
+    let arcStop1     = this._arcInterp(percent, this.arcStart1, to.arcStart1, this.arcStop1, to.arcStop1)[1];
   
     let offsetx2     = map(percent, 0, 100, this.offsetx2, to.offsetx2);
     let offsety2     = map(percent, 0, 100, this.offsety2, to.offsety2);
     let radius2      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, this.radius2, to.radius2);
   
-    let arcStart2    = arcInterp((percent < 50) ? 0 : 2 * (percent - 50), this.arcStart2, to.arcStart2, this.arcStop2, to.arcStop2)[0];
-    let arcStop2     = arcInterp((percent < 50) ? 0 : 2 * (percent - 50), this.arcStart2, to.arcStart2, this.arcStop2, to.arcStop2)[1];
+    let arcStart2    = this._arcInterp((percent < 50) ? 0 : 2 * (percent - 50), this.arcStart2, to.arcStart2, this.arcStop2, to.arcStop2)[0];
+    let arcStop2     = this._arcInterp((percent < 50) ? 0 : 2 * (percent - 50), this.arcStart2, to.arcStart2, this.arcStop2, to.arcStop2)[1];
   
     let lineXCenter  = map((2 * percent > 99) ? 100 : 2 * percent, 0, 100, this.lineXCenter, to.lineXCenter);
     let lineYCenter  = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, this.lineYCenter, to.lineYCenter);
-    let lineLength   = lineInterp(percent, this.lineLength, to.lineLength); 
+    let lineLength   = this._lineInterp(percent, this.lineLength, to.lineLength); 
   
     let lineRotation = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, this.lineRotation, to.lineRotation);
 
@@ -91,6 +91,56 @@ class Character {
       offsetx2, offsety2, radius2, arcStart2, arcStop2, 
       lineXCenter, lineYCenter, lineLength, lineRotation
     );
+  }
+
+  /**
+   * THEORY:
+   * 
+   * If stop < start, then this means must have gone through 0.
+   * If this is the case, then stop must be increased by 360.
+   * This also guarantees that start < stop.
+   * 
+   * Convergence rule: 
+   * If startA < startB < stopB < stopA, the two points should converge.
+   * 
+   * Divergence rule:
+   * If startB < startA < stopA < stopB, the two points should diverge.
+   * 
+   * Clockwise rule:
+   * If startA < startB < stopA < stopB, the two points should move right.
+   * 
+   * Anti-clockwise rule:
+   * startB < startA < stopB < stopA, the two points should move left.
+   */
+  _arcInterp(percent, startA, startB, stopA, stopB) {
+    let startInterp = 0, stopInterp = 0;
+
+    // Apply rules.
+    stopA += (stopA < startA) ? 360 : 0;
+    stopB += (stopB < startB) ? 360 : 0;
+
+    // Interpolate.
+    startInterp = startA + percent * (startB - startA) / 100;
+    stopInterp = stopA + percent * (stopB - stopA) / 100;
+
+    // Corrects if either start or stop go over or under 360 and 0 respectively.
+    startInterp -= (startInterp > 360) ? 360 : 0; 
+    stopInterp -= (stopInterp > 360) ? 360 : 0; 
+    
+    return [startInterp, stopInterp];
+  }
+
+  /**
+   * Interpolates the line length.
+   * If the percent is less than 50, then the line will shrink to 0.
+   * If the percent is greater than 50, then the line will grow from 0 to the new length.
+   */
+  _lineInterp(percent, oldL, newL) {
+    let interpLength;
+    if (percent < 50) interpLength = oldL - percent * (oldL / 50);
+    else interpLength = (percent - 50) * newL / 50;
+
+    return interpLength;
   }
 }
 
@@ -108,7 +158,6 @@ class CharConverter extends Character {
     );
   }
 }
-
 
 const SIZE = 70;
 const STROKE_WEIGHT = SIZE/12;
