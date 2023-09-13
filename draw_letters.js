@@ -27,4 +27,9 @@ var swapWords = [
   "ABBAABBA",
   "CAB?CAB?",
   "BAAAAAAA",
+  "QWERTYUI",
+  "01101100",
+  "MRGREENZ",
+  "CARCOSA1",
+  "EMPTYSTR",
 ]
