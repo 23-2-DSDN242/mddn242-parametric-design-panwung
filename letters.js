@@ -60,6 +60,37 @@ class Character {
     );
     pop();
   }
+
+  interpolateTo(to, percent) {
+    let sWeight = this.sWeight;
+
+    let offsetx1     = map(percent, 0, 100, this.offsetx1, to.offsetx1);
+    let offsety1     = map(percent, 0, 100, this.offsety1, to.offsety1);
+    let radius1      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, this.radius1, to.radius1);
+  
+    let arcStart1    = arcInterp(percent, this.arcStart1, to.arcStart1, this.arcStop1, to.arcStop1)[0];
+    let arcStop1     = arcInterp(percent, this.arcStart1, to.arcStart1, this.arcStop1, to.arcStop1)[1];
+  
+    let offsetx2     = map(percent, 0, 100, this.offsetx2, to.offsetx2);
+    let offsety2     = map(percent, 0, 100, this.offsety2, to.offsety2);
+    let radius2      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, this.radius2, to.radius2);
+  
+    let arcStart2    = arcInterp((percent < 50) ? 0 : 2 * (percent - 50), this.arcStart2, to.arcStart2, this.arcStop2, to.arcStop2)[0];
+    let arcStop2     = arcInterp((percent < 50) ? 0 : 2 * (percent - 50), this.arcStart2, to.arcStart2, this.arcStop2, to.arcStop2)[1];
+  
+    let lineXCenter  = map((2 * percent > 99) ? 100 : 2 * percent, 0, 100, this.lineXCenter, to.lineXCenter);
+    let lineYCenter  = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, this.lineYCenter, to.lineYCenter);
+    let lineLength   = lineInterp(percent, this.lineLength, to.lineLength); 
+  
+    let lineRotation = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, this.lineRotation, to.lineRotation);
+
+    return new Character(
+      sWeight,
+      offsetx1, offsety1, radius1, arcStart1, arcStop1,
+      offsetx2, offsety2, radius2, arcStart2, arcStop2, 
+      lineXCenter, lineYCenter, lineLength, lineRotation
+    );
+  }
 }
 
 /**

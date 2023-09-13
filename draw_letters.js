@@ -19,36 +19,7 @@ function drawLetter(letterData) {
 }
 
 function interpolate_letter(percent, oldObj, newObj) {
-  let newLetter = {};
-
-  newLetter.sWeight = oldObj.sWeight;
-
-  newLetter.offsetx1     = map(percent, 0, 100, oldObj.offsetx1, newObj.offsetx1);
-  newLetter.offsety1     = map(percent, 0, 100, oldObj.offsety1, newObj.offsety1);
-  newLetter.radius1      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, oldObj.radius1, newObj.radius1);
-
-  newLetter.arcStart1    = arcInterp(percent, oldObj.arcStart1, newObj.arcStart1, oldObj.arcStop1, newObj.arcStop1)[0];
-  newLetter.arcStop1     = arcInterp(percent, oldObj.arcStart1, newObj.arcStart1, oldObj.arcStop1, newObj.arcStop1)[1];
-
-  newLetter.offsetx2     = map(percent, 0, 100, oldObj.offsetx2, newObj.offsetx2);
-  newLetter.offsety2     = map(percent, 0, 100, oldObj.offsety2, newObj.offsety2);
-  newLetter.radius2      = map((2 * percent > 100) ? 100 : 2 * percent, 0, 100, oldObj.radius2, newObj.radius2);
-
-  newLetter.arcStart2    = arcInterp((percent < 50) ? 0 : 2 * (percent - 50), oldObj.arcStart2, newObj.arcStart2, oldObj.arcStop2, newObj.arcStop2)[0];
-  newLetter.arcStop2     = arcInterp((percent < 50) ? 0 : 2 * (percent - 50), oldObj.arcStart2, newObj.arcStart2, oldObj.arcStop2, newObj.arcStop2)[1];
-
-  newLetter.lineXCenter  = map((2 * percent > 99) ? 100 : 2 * percent, 0, 100, oldObj.lineXCenter, newObj.lineXCenter);
-  newLetter.lineYCenter  = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, oldObj.lineYCenter, newObj.lineYCenter);
-
-
-  newLetter.lineLength   = lineInterp(percent, oldObj.lineLength, newObj.lineLength); 
-
-  //newLetter.lineLength   = map(percent, 0, 100, oldObj.lineLength, newObj.lineLength);
-  newLetter.lineRotation = map((percent < 50) ? 0 : 2 * (percent - 50), 0, 100, oldObj.lineRotation, newObj.lineRotation);
-
-  newLetter.draw = oldObj.draw;
-
-  return newLetter;
+  return oldObj.interpolateTo(newObj, percent);
 }
 
 var swapWords = [
